@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Embedded Voiceflow Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .arrow-container {
+      margin: 20px 0;
+    }
+
+    .arrow-image {
+      width: 100px;
+      height: 100px;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: rotate(45deg) translate(0, 0); }
+      50% { transform: rotate(45deg) translate(10px, 10px); }
+    }
+  </style>
+</head>
+<body>
+  <h1>Welcome to Pantry Pixie Chatbot</h1>
+  <p>Press the button in the bottom right corner to start chatting with Pixie</p>
+  <!-- Embedded Chatbot Container -->
+  <div id="voiceflow-chat-container" style="width: 100%; height: 600px; margin: auto;"></div>
+
+  <!-- Chatbot Script -->
+  <script type="text/javascript">
+    (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+          window.voiceflow.chat.load({
+            verify: { projectID: '6782beadcbac8c66784981a0' }, // Replace with your project ID
+            url: 'https://general-runtime.voiceflow.com',
+            versionID: 'production', // Replace with 'development' if needed
+            // Embed the chat directly into a container instead of a popup
+            embed: { container: '#voiceflow-chat-container' }
+          });
+        };
+        v.src = "https://cdn.voiceflow.com/widget/bundle.mjs"; 
+        v.type = "text/javascript"; 
+        s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
+</body>
+</html>
